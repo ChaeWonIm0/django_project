@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-
 def landing(request):
     return render(
         request,
@@ -11,4 +10,5 @@ def about_me(request):
         request,
         'single_pages/about_me.html'
     )
+
 # Create your views here.

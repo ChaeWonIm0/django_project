@@ -3,6 +3,5 @@ from . import views
 
 urlpatterns = [
     path('about_me/', views.about_me),
-    # path('')
-    path('', views.landing),
+    path('', views.landing), # 함수 사용시에만 사용
 ]
