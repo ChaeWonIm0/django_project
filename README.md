@@ -7,3 +7,6 @@
 #### 서버 이미지
 
 ![image](https://user-images.githubusercontent.com/114221089/225241486-ba5dc180-abf1-4562-8fd6-4fd08a69af98.png)
+
+![image](https://user-images.githubusercontent.com/114221089/225241621-076bfac1-fb08-463f-bbf2-77864da010a4.png)
+
