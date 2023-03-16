@@ -6,8 +6,8 @@
 
 #### 서버 이미지
 
-![image](https://user-images.githubusercontent.com/114221089/225241486-ba5dc180-abf1-4562-8fd6-4fd08a69af98.png)
+![image](https://user-images.githubusercontent.com/114221089/225491146-6e105403-aeb7-4b17-bd03-4a1bfb5a8d98.png)
 
-![image](https://user-images.githubusercontent.com/114221089/225241621-076bfac1-fb08-463f-bbf2-77864da010a4.png)
 
-![image](https://user-images.githubusercontent.com/114221089/225241816-78d33130-94fc-4a58-83bd-61753fcf8ec8.png)
+#### 서버 url
+http://127.0.0.1:8000/blog/
