@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <script src="https://kit.fontawesome.com/3378f1cd06.js" crossorFigin="anonymous"></script>
   <title>{{ post.title }} - Blog</title>
 
   <!-- Bootstrap core CSS -->
@@ -59,6 +59,7 @@
 
         <!-- Title -->
         <h1 class="mt-4">{{ post.title }}</h1>
+        <h5 class="text-muted">{{ post.hook_text }}</h5>
 
         <!-- Author -->
         <p class="lead">
@@ -74,13 +75,32 @@
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="">
-
+        {% if post.head_image %}
+         <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }} head image">
+        {% else %}
+         <img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id }}/800/200" alt = "random_image">
+        {% endif %}
         <hr>
-
         <!-- Post Content -->
         <p>{{ post.content }}</p>
         <hr>
+
+         {% if post.file_upload %}
+            <a href="{{ post.file_upload.url }}" class="btn btn-outline-dark" role="button" download>
+         Download:
+              {% if post.get_file_ext == 'csv' %}
+                <i class="fas fa-file-csv"></i>
+              {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                <i class="fas fa-file-excel"></i>
+         {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc' %}
+         <i class="fas fa-file-word"></i>
+         {% else %}
+         <i class="far fa-file"></i>
+         {% endif %}
+         {{ post.get_file_name }}
+         </a>
+         {% endif %}
+
 
         <!-- Comments Form -->
         <div class="card my-4">
