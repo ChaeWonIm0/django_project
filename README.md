@@ -8,6 +8,3 @@
 
 ![image](https://user-images.githubusercontent.com/114221089/225491146-6e105403-aeb7-4b17-bd03-4a1bfb5a8d98.png)
 
-
-#### 서버 url
-http://127.0.0.1:8000/blog/
