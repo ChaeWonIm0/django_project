@@ -5,8 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <div class="container">
             <a class="navbar-brand" href="/">Blog</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,10 +14,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./blog_list.html">Blog List</a>
+                  <a class="nav-link" href="/blog/">Blog List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about_me/">About Me</a>
@@ -39,7 +38,17 @@
                 </li>
               </ul>
 
-              <!-- Modal -->
+              <!-- 로그인 버튼 -->
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          </nav>
+
+         <!-- Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel"
                 aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -67,6 +76,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
