@@ -1,13 +1,17 @@
-from django.shortcuts import render, redirect
-from .models import Post, Category, Tag
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Post, Category, Tag, Comment
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.utils.text import slugify
 from django.core.exceptions import PermissionDenied
+from .forms import CommentForm
+from django.db.models import Q
 
 # 블로그 메인 글 리스트
 class PostList(ListView):
       model = Post
+      ordering = '-pk'
+      paginate_by = 5
       def get_context_data(self, **kwargs):
           context = super(PostList, self).get_context_data()
           context['categories'] = Category.objects.all()
@@ -22,6 +26,7 @@ class PostDetail(DetailView):
          context = super(PostDetail, self).get_context_data()
          context['categories'] = Category.objects.all()
          context['no_category_post_count'] = Post.objects.filter(category=None).count()
+         context['comment_form'] = CommentForm
          return context
 
 # 블로그 글 작성 페이지
@@ -80,6 +85,26 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
         else:
             raise PermissionDenied
 
+    def form_valid(self, form):
+        response = super(PostUpdate, self).form_valid(form)
+        self.object.tags.clear()
+
+        tags_str = self.request.POST.get('tags_str')
+        if tags_str:
+            tags_str = tags_str.strip()
+            tags_str = tags_str.replace(',', ';')
+            tags_list = tags_str.split(';')
+
+            for t in tags_list:
+                t = t.strip()
+                tag, is_tag_created = Tag.objects.get_or_create(name=t)
+                if is_tag_created:
+                    tag.slug = slugify(t, allow_unicode=True)
+                    tag.save()
+                self.object.tags.add(tag)
+
+        return response
+
 # 블로그 카테고리 페이지
 def category_page(request, slug):
     if slug == 'no_category':
@@ -115,7 +140,64 @@ def tag_page(request, slug):
         }
     )
 
+# 댓글 작성 기능
+def new_comment(request, pk):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, pk=pk)
 
+        if request.method == 'POST':
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.post = post
+                comment.author = request.user
+                comment.save()
+                return redirect(comment.get_absolute_url())
+        else:
+            return redirect(post.get_absolute_url())
+    else:
+        raise PermissionDenied
+
+
+# 댓글 수정 기능
+class CommentUpdate(LoginRequiredMixin, UpdateView):
+    model = Comment
+    form_class = CommentForm
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user == self.get_object().author:
+            return super(CommentUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
+
+# 댓글 삭제 기능
+def delete_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    post = comment.post
+    if request.user.is_authenticated and request.user == comment.author:
+        comment.delete()
+        return redirect(post.get_absolute_url())
+    else:
+        raise PermissionDenied
+
+
+# 검색기능
+class PostSearch(PostList):
+    paginate_by = None
+
+    def get_queryset(self):
+        q = self.kwargs['q']
+        post_list = Post.objects.filter(
+            Q(title__contains=q) |  Q(tags__name__contains=q) | Q(content__contains=q) | Q(hook_text__contains=q) | Q(author__username__icontains=q)
+        ).distinct()
+        return post_list
+
+    def get_context_data(self, **kwargs):
+        context = super(PostSearch, self).get_context_data()
+        q = self.kwargs['q']
+        context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+
+        return context
 
 # def index(request):
 #     # posts = Post.objects.all() # 작성시간별 내림차순
