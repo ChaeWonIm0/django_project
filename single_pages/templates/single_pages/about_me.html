@@ -1,32 +1,200 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>개발자 임채원 입니다.</title>
+    <title>  Seoul · AI/ ML engineer/ Develop </title>
+
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'single_pages/css/about_me.css' %}" media="screen">
+    <script src="https://kit.fontawesome.com/726bbd6862.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav>
-  <a href="/blog/">Blog</a>
-  <a href="/about_me/">About me</a>
-</nav>
 
-<h1>안녕하세요. 임채원입니다</h1>
-<h2>이력</h2>
-<h2>Portfolio</h2>
-<h3>https://github.com/dla9944
-머신러닝 엔지니어, 데이터 엔지니어& 사이언티스트를 희망중입니다. <br>
-2019-2020 농수축산물 가격 동향 분석 서울특별시의 시장, 대형마트의 농수축산물 가격 동향을 머신러닝 모델 5가지를 통해 분석했습니다.<br>
-Linear regression,Decision Tree,Random forest,LightGBM.<br>
-위 모델 적용 후, MSE, RMSE, 결정계수 분석</h3>
+{% include 'blog/navbar.html' %}
 
-<h3>https://colab.research.google.com/drive/1pcspaHC1dsKSCQ4CBRIRfjMb8wZHlRIS?usp=sharing
-</h3>
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2>안녕하세요. 인공지능 개발자 임채원 입니다.</h2>
+                <br/>
+                <p class="lead">
+                    배우고자 하는 열정을 가장 중요한 덕목으로 여기고 있으며 목표의 수립과 달성을 최우선적으로 생각합니다.<br/>
+                </p>
 
-<hr>
-<h3>세상에 없던 포켓몬스터 발생_GAN 활용. <br> GAN (생성자 적대적 신경망) 모델을 사용해서 새로운 포켓몬 이미지를 제작했습니다<br>
-800종의 포켓몬으로 학습 후 이미지 생성. 20명 대상으로 퀴즈 게임 진행</h3>
+                <ul>
+                    <li>WORK EXPERIENCE</li>
+                    <ul>
+                        <li> 티랜드 - PR/Planning (2020.10 ~ 2022.10)</li>
+                        <li> 한국관광공사 - 레저관광 (2019.05 ~ 2019.11)</li>
+                        <li> 건강보험심사평가원 - 의약품정보개발 (2019.05 ~ 2019.11)</li>
+                    </ul>
+                    <li>EDUCATION</li>
+                    <ul>
+                        <li> 부트캠프-AI기반 풀스텍 교육과정, 플레이데이터 (2022.11~2023.05)</li>
+                        <li>철학학사, 글로벌행정학(Double major), 연세대 미래캠퍼스 (2013.03~2019.08)</li>
+                    </ul>
+                    <li>Tech log</li>
+                    <ul>
+                        <li> astart.tistory.com </li>
+                    </ul>
+                    <li>Certification</li>
+                    <ul>
+                        <li>ADSP. 2023</li>
+						<li>컴퓨터활용능력 1급. 2018</li>
+                        <li> OPIC IM1. 2021</li>
+                    </ul>
+                </ul>
 
-<h3>https://colab.research.google.com/drive/1MJcjwnlM4vFa7OzH7jJRPQq0sMb4SUMp?usp=sharing
-</h3>
+            </div>
+            <div class="col-lg-4">
+                <img class="img-fluid" src="{% static 'single_pages/images/jkh.jpg' %}">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-light margin-for-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>PORTFOLIO</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card" data-toggle="modal" data-target="#pycon2017">
+                    <img class="card-img-top" src="{% static 'single_pages/images/pycon_sy_2017.png' %}">
+                    <div class="card-body">
+                        <h5 class="card-title">파이썬으로 2019-2020 농수축산물 가격 동향 분석 </h5>
+                        <p>서울특별시의 시장, 대형마트의 농수축산물 가격동향을 머신러닝 모델로 분석</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card" data-toggle="modal" data-target="#inflearn_django2">
+                    <img class="card-img-top" src="{% static 'single_pages/images/inflearn_django2.png' %}">
+                    <div class="card-body">
+                        <h5 class="card-title"> GAN기반 세상에 없던 포켓몬스터 발생</h5>
+                        <p>800종의 포켓몬으로 학습 후 이미지 생성. 20명 대상으로 퀴즈 게임 진행</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card" data-toggle="modal" data-target="#automation_python">
+                    <img class="card-img-top" src="{% static 'single_pages/images/automation_python.png' %}">
+                    <div class="card-body">
+                        <h5 class="card-title">직장인을 위한 프로그래밍 입문과 업무 자동화 활용</h5>
+                        <p>파이썬 업무자동화에 대해 강의 중</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="pycon2017" tabindex="-1" role="dialog" aria-labelledby="pycon2017ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pycon2017ModalLabel">파이썬으로 통계업무 자동화하기</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <img class="img-fluid" src="{% static 'single_pages/images/pycon_sy_2017.png' %}">
+                    </div>
+                    <div class="col-lg-5">
+                        <p>Python, Django, Pandas, python-docx로 통계업무 자동화한 내용을 파이콘에서 발표했습니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="inflearn_django2" tabindex="-1" role="dialog" aria-labelledby="inflearnDjangoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id=" inflearnDjangoModalLabel">파이썬 사용자를 위한 웹개발 입문 A to Z Django + Bootstrap</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <img class="img-fluid" src="{% static 'single_pages/images/inflearn_django2.png' %}">
+                    </div>
+                    <div class="col-lg-5">
+                        <p>파이썬 초보를 대상으로 한 웹개발 강좌입니다. 인프런에서 서비스하고 있습니다.</p>
+                        <button type="button" class="btn btn-light"><i class="fas fa-chalkboard-teacher"></i> 인프런</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="automation_python" tabindex="-1" role="dialog" aria-labelledby="automationPythonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id=" automationPythonModalLabel">직장인을 위한 프로그래밍 입문과 업무자동화 활용</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <img class="img-fluid" src="{% static 'single_pages/images/automation_python.png' %}">
+                    </div>
+                    <div class="col-lg-5">
+                        <p>코딩에 대해 아무것도 모르는 직장인들도 쉽게 프로그래밍의 기본 개념과 문법을 실습을 통해 배우고, 파일 입출력, 엑셀 데이터 처리, MS-word 문서 자동으로 만들기, 그래프 그리기, 웹스크래핑 등을 배웁니다.</p>
+                        <button type="button" class="btn btn-light"><i class="fas fa-chalkboard-teacher"></i> 인프런</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="fixed-bottom">
+    {% include 'blog/footer.html' %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
 </body>
 </html>

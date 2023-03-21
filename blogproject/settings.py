@@ -23,10 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j(vzs8a3(9c@g2i2u4u1ryew(6=6js=@gh%lynhwiekpsr4s0q'
-
+# SECRET_KEY = 'django-insecure-j(vzs8a3(9c@g2i2u4u1ryew(6=6js=@gh%lynhwiekpsr4s0q'
+# SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-j(vzs8a3(9c@g2i2u4u1ryew(6=6js=@gh%lynhwiekpsr4s0q')
+SECRET_KEY = os.environ.get('SECRET_KEY', '*&1yd@!vqkxb4a0@gi6*s1kg-z0(6h-%yu+-reyc8qg#8boe!p')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get('DEBUG', 1))
+
+if os.environ.get('DJANGO_ALLOWED_HOSTS'):
+    ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
+else:
+    ALLOWED_HOSTS = []
 
 ALLOWED_HOSTS = []
 
@@ -98,6 +104,7 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 DATABASES = mysql_settings.DATABASES
 SECRET_KEY = mysql_settings.SECRET_KEY
 
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -149,7 +156,7 @@ SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
 Account_EMAIL_VERIFICATION = 'none'
-
+LOGIN_REDIRECT_URL = '/blog/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
